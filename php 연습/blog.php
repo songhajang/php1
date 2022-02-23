@@ -17,11 +17,16 @@
             <div class="row">
                 <div class="col-12 col-lg-9">
 
-
                 <?php
+                    if(isset($_SESSION['id'])){
+                ?>
+
+                    <button class="btn btn-primary mb-50" onclick="location.href='blog1write.php'">새글</button>
+                <?php
+                    }
+
                     foreach($result as $blog){
 
-                    
                 ?>
                     <!-- Single Post Start -->
                     <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
@@ -53,10 +58,25 @@
                             </div>
                             <!-- Post Excerpt -->
                             <p><?=$blog['content'];?></p>
+
+                            <hr>
+                            <!-- 수정, 삭제 버튼 -->
+                            <?php 
+                                if(isset($_SESSION['id'])){
+
+                                    if($_SESSION['id']== $blog['id']){
+                            ?>
+
+                                        <button class="btn btn-warning" onclick="location.href='blog1mod.php?no=<?=$blog['no'];?>'">수정</button>
+                                        <button  class="btn btn-danger" onclick="location.href='_blog1delete.php?no=<?=$blog['no'];?>'">삭제</button>
+                            <?php 
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                     <!-- Single Post End -->  
-                    
+
                     <?php
                         }
                     ?>
