@@ -94,9 +94,24 @@
                     <div class="oneMusic-pagination-area wow fadeInUp" data-wow-delay="300ms">
                         <nav>
                             <ul class="pagination">
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                <li class="page-item active"><a class="page-link" href="blog.php?current_page=1">⏮️</a></li>
+
+                                <?php if($current_page > 1) { ?>
+                                <li class="page-item"><a class="page-link" href="blog.php?current_page=<?=$prev_page;?>">◀️</a></li>
+                                <?php } else{ ?>
+                                    <li class="page-item"><a class="page-link" href="#">◀️</a></li>
+                                <?php } ?>
+
+                                <?php if($current_page < $end_page) { ?>
+
+                                    <li class="page-item"><a class="page-link" href="blog.php?current_page=<?=$next_page;?>">▶️</a></li>
+                                    <?php } else{ ?>
+                                        <li class="page-item"><a class="page-link" href="#">▶️</a></li>
+                                <?php } ?>
+                                <li class="page-item active"><a class="page-link" href="blog.php?current_page=<?=$end_page;?>">⏭️</a></li>
+
+                                <br>
+                                <p>현 페이지<?=$current_page;?>/ 총 페이지<?=$end_page;?></p>
                             </ul>
                         </nav>
                     </div>
