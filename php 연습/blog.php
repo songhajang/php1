@@ -32,8 +32,11 @@
                     <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Post Thumb -->
                         <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="img/bg-img/blog1.jpg" alt="blog imge"></a>
-
+                            <?php if($blog['img_file']) { ?>
+                                <a href="#"><img src="blog_img/<?=$blog['img_file'];?>" alt="blog imge"></a>
+                                <?php } else { ?>
+                                    <a href="#"><img src="blog_img/noimg.png" alt="no blog imge"></a>
+                                <?php } ?>
                             <!-- Post Date -->
                             <div class="post-date">
                                 <?php
@@ -97,17 +100,17 @@
                                 <li class="page-item active"><a class="page-link" href="blog.php?current_page=1">⏮️</a></li>
 
                                 <?php if($current_page > 1) { ?>
-                                <li class="page-item"><a class="page-link" href="blog.php?current_page=<?=$prev_page;?>">◀️</a></li>
+                                    <li class="page-item"><a class="page-link" href="blog.php?current_page=<?=$prev_page;?>">◀️</a></li>
                                 <?php } else{ ?>
                                     <li class="page-item"><a class="page-link" href="#">◀️</a></li>
                                 <?php } ?>
 
                                 <?php if($current_page < $end_page) { ?>
-
                                     <li class="page-item"><a class="page-link" href="blog.php?current_page=<?=$next_page;?>">▶️</a></li>
-                                    <?php } else{ ?>
-                                        <li class="page-item"><a class="page-link" href="#">▶️</a></li>
+                                <?php } else{ ?>
+                                    <li class="page-item"><a class="page-link" href="#">▶️</a></li>
                                 <?php } ?>
+
                                 <li class="page-item active"><a class="page-link" href="blog.php?current_page=<?=$end_page;?>">⏭️</a></li>
 
                                 <br>
